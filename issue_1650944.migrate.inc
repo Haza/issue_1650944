@@ -65,22 +65,14 @@ class issue_1650944_ProductDisplay extends Migration {
     $this->addFieldMapping('title', 'title');
     $this->addFieldMapping('body', 'description');
 
-    // See prepareRow
-    $this->addFieldMapping('field_product_variations', 'skus');
+    // Use the sourceMigration method. This "should" works if i'm not wrong...
+    $this->addFieldMapping('field_product_variations', 'sku')
+     ->separator(', ')
+     ->sourceMigration('issue_1650944_Products');
   }
 
   public function prepareRow($row) {
-
-    // The workaround.
-    // Do not rely on a sourcemigration, but populate a pseudo-row with our
-    // values.
-    $products = array();
-    foreach (explode(', ', $row->sku) as $sku) {
-      $product = commerce_product_load_by_sku($sku);
-      print_r($product);
-      $products[] = $product->product_id;
-    }
-    $row->skus = $products;
+    // nothing here.
   }
 
   function csvcolumns() {
