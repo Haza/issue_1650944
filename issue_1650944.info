@@ -3,6 +3,7 @@ description = Issue 1650944
 core = 7.x
 package = Features
 php = 5.2.4
+dependencies[] = commerce
 dependencies[] = commerce_migrate
 dependencies[] = commerce_product_reference
 dependencies[] = features
