@@ -1,0 +1,17 @@
+<?php
+/**
+ * @file
+ * Code for the 1650944 feature.
+ */
+
+include_once 'issue_1650944.features.inc';
+
+/**
+ * Implements hook_migrate_api().
+ */
+function issue_1650944_migrate_api() {
+  $api = array(
+    'api' => 2,
+  );
+  return $api;
+}
